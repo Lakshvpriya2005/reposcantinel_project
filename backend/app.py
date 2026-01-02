@@ -255,10 +255,9 @@ class VulnerabilityScanner:
         risk_score = min(100, int((total_weight / max_possible) * 100))
         return risk_score
 
-# Routes
-@app.route('/')
-def health_check():
-    return jsonify({'status': 'Backend is running', 'timestamp': datetime.now().isoformat()})
+@app.route("/api/health")
+def health():
+    return jsonify({"status": "Backend is running"})
 
 @app.route('/api/scan', methods=['POST'])
 def start_scan():
